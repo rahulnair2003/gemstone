@@ -63,7 +63,7 @@ def main(input_file, output_file):
     plt.figure(figsize=(10, 6))
     plt.plot(input_data, color='b', label='Input Signal')
     plt.plot(output_data, color='r', label='Output Signal')
-    plt.title('Input and Output Signals')
+    plt.title('Input and Output Signals - Biquad Cascade DF1')
     plt.xlabel('Sample')
     plt.ylabel('Amplitude')
     plt.legend()

@@ -19,41 +19,32 @@ class LMSFilter:
         error_data = np.zeros_like(reference_data)
         
         for i in range(len(reference_data)):
-            # Compute filter output
             output_data[i] = np.dot(self.coeffs, np.concatenate(([input_data[i]], self.state)))
-            # Compute error
             error_data[i] = reference_data[i] - output_data[i]
-            # Update coefficients
             self.coeffs += self.mu * error_data[i] * np.concatenate(([input_data[i]], self.state))
-            # Update state
             self.state = np.roll(self.state, 1)
             self.state[0] = input_data[i]
         
         return output_data, error_data
 
 def main(input_file, output_file):
-    # Read input audio file
     input_data, samplerate = sf.read(input_file)
-    # Assume mono audio
     if len(input_data.shape) > 1:
         input_data = input_data[:, 0]
     
-    # Initialize LMS filter
-    num_taps = 32  # Example number of taps, you may need to adjust this
-    mu = 0.1  # Example step size, you may need to adjust this
+    num_taps = 32 
+    mu = 0.1 
     lms_filter = LMSFilter(num_taps, mu)
     
-    # Process audio data
-    output_data, error_data = lms_filter.process(input_data, input_data)  # Using input as reference
+    output_data, error_data = lms_filter.process(input_data, input_data)
     
-    # Write output audio file
     sf.write(output_file, output_data, samplerate)
 
     # Plot input and output signals
     plt.figure(figsize=(10, 6))
     plt.plot(input_data, color='b', label='Input Signal')
     plt.plot(output_data, color='r', label='Output Signal')
-    plt.title('Input and Output Signals')
+    plt.title('Input and Output Signals - LMS')
     plt.xlabel('Sample')
     plt.ylabel('Amplitude')
     plt.legend()
