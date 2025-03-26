@@ -31,7 +31,7 @@ This tool generates structured benchmarks to evaluate audio processing models ac
 
 High-Level Architecture of the Benchmarking Tool Suite
 
-![Benchmarking Tool Architecture](images/architecture_diagram.png)
+![Benchmarking Tool Architecture](images/benchmark_architecture.png)
 
 ## Dataset
 
