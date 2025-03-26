@@ -2,7 +2,7 @@
 
 ## Overview
 
-This tool generates structured benchmarks to evaluate audio processing models across diverse environmental conditions. Using the audio dataset, the notebooks allow anyone to process each `.wav` file through a selected model, compute evaluation metrics, and store results in a JSON format for easy comparison and visualization.
+This tool suite allows users to generate structured benchmarks and evaluate audio processing models across diverse environmental conditions. Using the audio dataset, the notebooks help to process each `.wav` file through a selected model, compute evaluation metrics, and store results in a JSON format for easy comparison and visualization.
 
 ## Dataset
 
