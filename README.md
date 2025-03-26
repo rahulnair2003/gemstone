@@ -1,37 +1,8 @@
-# Benchmark Generation – Team ECHO Benchmarking Tool Suite
+# Team ECHO Benchmarking Tool Suite
 
 ## Overview
 
-This tool generates structured benchmarks to evaluate audio processing models across diverse environmental conditions. Using Team ECHO’s labeled dataset, the notebook processes each `.wav` file through a selected model, computes evaluation metrics, and stores results in a JSON format for easy comparison and visualization.
-
-## How It Works
-
-1. **Import Dataset**  
-   Load the full environmental audio dataset, which includes `.wav` files labeled by:
-   - Environment: `Indoors`, `Crowded`, `Speaking`, `Walking`
-   - Speaker: `Voice_Type`, `Voice_ID`
-   - Location and duration metadata
-
-2. **Run Benchmarking Notebook**  
-   Use the `generate_benchmarks.ipynb` notebook to:
-   - Process each `.wav` file through your audio model
-   - Compute six audio quality metrics
-   - Save results in a structured JSON format for comparison analysis
-
-3. **Generate Benchmark JSON**  
-   For each audio file, the benchmark includes:
-   - Environmental and speaker metadata
-   - Metrics:
-     - Total Harmonic Distortion (THD)
-     - Signal-to-Noise Ratio (SNR)
-     - Noise Floor
-     - Dynamic Range
-     - Crest Factor
-     - Waveform Complexity Index (WCI)
-
-# High-Level Architecture of the Benchmarking Tool Suite
-
-![Benchmarking Tool Architecture](images/benchmark_architecture.png)
+This tool generates structured benchmarks to evaluate audio processing models across diverse environmental conditions. Using the audio dataset, the notebooks allow anyone to process each `.wav` file through a selected model, compute evaluation metrics, and store results in a JSON format for easy comparison and visualization.
 
 ## Dataset
 
@@ -44,7 +15,20 @@ After downloading, place the dataset in your project directory and update the pa
 
 1. Clone this repository
 2. Download the dataset and place it in the working directory
-3. Open and run `generate_benchmarks.ipynb`
-4. Customize the model inference and metric computation code as needed
-5. Review the generated JSON files for benchmarking and visualization
+3. Open and run `generateBenchmark.ipynb` to:
+   - Load each `.wav` file from the dataset
+   - Process it through your selected audio model
+   - Compute the following audio quality metrics:
+     - Total Harmonic Distortion (THD)
+     - Signal-to-Noise Ratio (SNR)
+     - Noise Floor
+     - Dynamic Range
+     - Crest Factor
+     - Waveform Complexity Index (WCI)
+   - Store the output in a structured JSON format containing:
+     - Environmental metadata: `Indoors`, `Crowded`, `Speaking`, `Walking`
+     - Speaker metadata: `Voice_Type`, `Voice_ID`
+     - File metadata: duration, location, filename
+
+4. Use `comparejsons.ipynb` to analyze and visualize model performance across different environments and metrics
 
